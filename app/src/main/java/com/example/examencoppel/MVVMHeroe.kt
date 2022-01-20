@@ -20,12 +20,17 @@ class MVVMHeroe() : ViewModel() {
 
                 for (i: Int in 1..732) {
                     response = Repository().getHeroe(i.toString())!!
+
                     if (response.isSuccessful) {
                         Log.e("Jaló #$i", "${response.body().toString()}")
                         StorageHeroes.Heroes?.add(response.body()!!)
                         Log.e("Tamaño matriz", StorageHeroes.Heroes?.size.toString())
                     } else {
                         Log.e("No Jaló #$i", "Falló")
+                    }
+
+                    if(i==15){
+                        ListaHeroe().onRestart()
                     }
                 }
 
