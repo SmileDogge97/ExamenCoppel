@@ -19,14 +19,14 @@ import com.example.examencoppel.databinding.FragmentListaHeroeBinding
 class ListaHeroe : Fragment(){
 
     //var lista: RecyclerView? = null
-    lateinit var adaptador: AdaptadorCustom
+    var adaptador: AdaptadorCustom ?= null
     lateinit var layoutManager: LinearLayoutManager
     lateinit var listaViewModel: MVVMHeroe
 
 
     private var _binding:FragmentListaHeroeBinding ?= null
     private val binding get() = _binding!!
-    
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,11 +41,13 @@ class ListaHeroe : Fragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         listaViewModel = ViewModelProviders.of(this).get(MVVMHeroe::class.java)
         layoutManager = LinearLayoutManager(this.context)
+        binding?.RVLista!!.layoutManager = layoutManager
         listaViewModel.progressB = binding?.ProgressB
         listaViewModel.recyclerView = binding?.RVLista!!
-        binding?.RVLista!!.layoutManager = layoutManager
+
         startRequest()
 
 
@@ -55,7 +57,8 @@ class ListaHeroe : Fragment(){
 //                if (dy > 0) {
                 val visibleItemCount = layoutManager.childCount
                 val pastVisibleItem = layoutManager.findFirstCompletelyVisibleItemPosition()
-                val total = adaptador.itemCount
+                //val total = adaptador?.itemCount
+                val total = listaViewModel.adaptador.itemCount
 
                 if (!listaViewModel.isLoading) {
 
@@ -72,32 +75,6 @@ class ListaHeroe : Fragment(){
             }
         })
     }
-
-
-
-    /*fun recargar(){
-        binding.RVLista
-        binding.RVLista?.setHasFixedSize(true)
-        layoutManager = LinearLayoutManager(context)
-        binding.RVLista?.layoutManager = layoutManager
-        adaptador = AdaptadorCustom(StorageHeroes.Heroes!!)
-
-        binding.RVLista.addOnScrollListener(object : RecyclerView.OnScrollListener(){
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                val visibleItemCount = layoutManager.childCount
-                val pastVisibleItem = layoutManager.findFirstCompletelyVisibleItemPosition()
-                val total = adaptador.itemCount
-
-                if(!isLoading){
-                    if((visibleItemCount + pastVisibleItem) >=total){
-                        page++
-                        getPage()
-                    }
-                }
-            }
-
-        })
-    }*/
 
     fun startRequest() {
         if (ValidarR.hayRed(context as AppCompatActivity)) {

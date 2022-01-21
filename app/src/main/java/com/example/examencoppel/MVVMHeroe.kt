@@ -27,48 +27,7 @@ class MVVMHeroe() : ViewModel(){
     lateinit var adaptador: AdaptadorCustom
     lateinit var layoutManager: LinearLayoutManager
     lateinit var recyclerView: RecyclerView
-    //lateinit var progressBar: ProgressBar
 
-
-
-
-    //var status: Boolean = false
-
-    /*fun requestsHeroes() {
-        viewModelScope.launch {
-            try {
-                if (status != true) {
-                    status = true
-
-                    var response: Response<HeroeData>
-
-                    for (i: Int in 1..731) {
-                        response = Repository().getHeroe(i.toString())!!
-
-                        if (response.isSuccessful) {
-                            Log.e("Jaló #$i", "${response.body().toString()}")
-
-                            if (StorageHeroes.Heroes!!.size < i) {
-                                StorageHeroes.Heroes?.add(response.body()!!)
-                                Log.e("si escribió", "xd")
-                            }
-
-                            Log.e("Tamaño matriz", StorageHeroes.Heroes?.size.toString())
-                        } else {
-                            Log.e("No Jaló #$i", "Falló")
-                        }
-                    }
-                }
-            } catch (e: SocketTimeoutException) {
-                Log.e("Catch 1", "No se pudo conectar con el servidor")
-            } catch (e: MalformedJsonException) {
-                Log.e(
-                    "Catch 2",
-                    "Error al realizar la consulta, verifica la dirección IP del servidor"
-                )
-            }
-        }
-    }*/
 
     fun getPage() {
         viewModelScope.launch {
@@ -81,7 +40,6 @@ class MVVMHeroe() : ViewModel(){
                 var response: Response<HeroeData>
 
                 if (StorageHeroes.Heroes!!.size <= 731) {
-
                     for (i in start..end) {
                         response = Repository().getHeroe(i.toString())!!
 
@@ -98,7 +56,6 @@ class MVVMHeroe() : ViewModel(){
                             Log.e("No Jaló #$i", "Falló")
                         }
                     }
-
                 }
 
                 Handler().postDelayed({
