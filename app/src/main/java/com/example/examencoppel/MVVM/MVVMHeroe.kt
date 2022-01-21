@@ -5,6 +5,8 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -51,14 +53,14 @@ class MVVMHeroe() : ViewModel() {
                         response = Repository().getHeroe(i.toString())!!
 
                         if (response.isSuccessful) {
-                            Log.e("Jaló #$i", "${response.body().toString()}")
+                            //Log.e("Jaló #$i", "${response.body().toString()}")
 
                             if (StorageHeroes.Heroes!!.size < i) {
                                 StorageHeroes.Heroes?.add(response.body()!!)
-                                Log.e("si escribió", "xd")
+                                //Log.e("si escribió", "xd")
                             }
 
-                            Log.e("Tamaño matriz", StorageHeroes.Heroes?.size.toString())
+                            //Log.e("Tamaño matriz", StorageHeroes.Heroes?.size.toString())
                         } else {
                             Log.e("No Jaló #$i", "Falló")
                         }
@@ -84,6 +86,7 @@ class MVVMHeroe() : ViewModel() {
 
             } catch (e: SocketTimeoutException) {
                 Log.e("Catch 1", "No se pudo conectar con el servidor")
+
             } catch (e: MalformedJsonException) {
                 Log.e(
                     "Catch 2",
