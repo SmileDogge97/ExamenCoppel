@@ -1,6 +1,7 @@
 package com.example.examencoppel
 
 import android.content.Context
+import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
@@ -23,6 +24,7 @@ class MVVMHeroe() : ViewModel(){
     var page = 0
     val limit = 10
     var isLoading = false
+    var contexto:Context ?= null
 
     lateinit var adaptador: AdaptadorCustom
     lateinit var layoutManager: LinearLayoutManager
@@ -64,7 +66,9 @@ class MVVMHeroe() : ViewModel(){
                     } else {
                         adaptador = AdaptadorCustom(StorageHeroes.Heroes!!, object:ClickListener{
                             override fun onClick(vista: View, index: Int) {
-                                Log.d("MVVM/getPage/onclick", "DISTE CLICK A $index")
+                                //Log.d("MVVM/getPage/onclick", "DISTE CLICK A $index")
+
+                                
                             }
                         })
                         recyclerView.adapter = adaptador

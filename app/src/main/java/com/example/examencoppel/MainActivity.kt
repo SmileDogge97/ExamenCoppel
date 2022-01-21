@@ -25,21 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        //loginViewModel = ViewModelProviders.of(this).get(MVVMHeroe::class.java)
-        //startRequest()
 
     }
-
-    /*fun startRequest() {
-        if (ValidarR.hayRed(this)) {
-            loginViewModel.requestsHeroes()
-        } else {
-            val builder = AlertDialog.Builder(this)
-            builder.setMessage("No hay red")
-            builder.setPositiveButton("ok") { dialog, id -> }
-            builder.show()
-        }
-    }*/
-
 
 }

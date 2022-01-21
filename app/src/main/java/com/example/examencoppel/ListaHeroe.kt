@@ -47,6 +47,7 @@ class ListaHeroe : Fragment(){
         binding?.RVLista!!.layoutManager = layoutManager
         listaViewModel.progressB = binding?.ProgressB
         listaViewModel.recyclerView = binding?.RVLista!!
+        listaViewModel.contexto = activity?.applicationContext
 
         startRequest()
 
