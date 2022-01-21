@@ -62,7 +62,11 @@ class MVVMHeroe() : ViewModel(){
                     if (::adaptador.isInitialized) {
                         adaptador.notifyDataSetChanged()
                     } else {
-                        adaptador = AdaptadorCustom(StorageHeroes.Heroes!!)
+                        adaptador = AdaptadorCustom(StorageHeroes.Heroes!!, object:ClickListener{
+                            override fun onClick(vista: View, index: Int) {
+                                Log.d("MVVM/getPage/onclick", "DISTE CLICK A $index")
+                            }
+                        })
                         recyclerView.adapter = adaptador
                     }
                     isLoading = false
