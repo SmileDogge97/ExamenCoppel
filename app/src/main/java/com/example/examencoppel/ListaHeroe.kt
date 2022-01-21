@@ -1,5 +1,6 @@
 package com.example.examencoppel
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.examencoppel.DataRetrofit.HeroeData
@@ -16,12 +18,13 @@ import com.example.examencoppel.DataRetrofit.StorageHeroes
 import com.example.examencoppel.databinding.FragmentListaHeroeBinding
 
 
-class ListaHeroe : Fragment(){
+class ListaHeroe : Fragment(), SenalNavigation{
 
     //var lista: RecyclerView? = null
     var adaptador: AdaptadorCustom ?= null
     lateinit var layoutManager: LinearLayoutManager
     lateinit var listaViewModel: MVVMHeroe
+    var vista: View ?= null
 
 
     private var _binding:FragmentListaHeroeBinding ?= null
@@ -48,6 +51,7 @@ class ListaHeroe : Fragment(){
         listaViewModel.progressB = binding?.ProgressB
         listaViewModel.recyclerView = binding?.RVLista!!
         listaViewModel.contexto = activity?.applicationContext
+        listaViewModel.senal= this
 
         startRequest()
 
@@ -75,6 +79,17 @@ class ListaHeroe : Fragment(){
                 super.onScrolled(recyclerView, dx, dy)
             }
         })
+
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        this.vista = view
+        binding.button2.setOnClickListener{
+            Navigation.findNavController(it).navigate(R.id.detalles)
+        }
     }
 
     fun startRequest() {
@@ -87,6 +102,15 @@ class ListaHeroe : Fragment(){
             builder.setPositiveButton("ok") { dialog, id -> }
             builder.show()
         }
+    }
+
+    override fun pasarADetalles() {
+        vista?.let { Navigation.findNavController(it).navigate(R.id.detalles) }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        StorageHeroes.Heroes?.clear()
     }
 
 }

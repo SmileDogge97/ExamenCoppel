@@ -11,7 +11,10 @@ import android.R
 import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
+import android.view.View
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,8 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
     }
+
 
 }

@@ -1,13 +1,14 @@
 package com.example.examencoppel
 
+import android.R
 import android.content.Context
-import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.examencoppel.DataRetrofit.HeroeData
@@ -17,14 +18,16 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.net.SocketTimeoutException
 
-class MVVMHeroe() : ViewModel(){
+
+class MVVMHeroe() : ViewModel() {
 
     //var isLoading = false
-    var progressB:ProgressBar ?= null
+    var progressB: ProgressBar? = null
     var page = 0
     val limit = 10
     var isLoading = false
-    var contexto:Context ?= null
+    var contexto: Context? = null
+    var senal: SenalNavigation ?= null
 
     lateinit var adaptador: AdaptadorCustom
     lateinit var layoutManager: LinearLayoutManager
@@ -64,11 +67,11 @@ class MVVMHeroe() : ViewModel(){
                     if (::adaptador.isInitialized) {
                         adaptador.notifyDataSetChanged()
                     } else {
-                        adaptador = AdaptadorCustom(StorageHeroes.Heroes!!, object:ClickListener{
+                        adaptador = AdaptadorCustom(StorageHeroes.Heroes!!, object : ClickListener {
                             override fun onClick(vista: View, index: Int) {
-                                //Log.d("MVVM/getPage/onclick", "DISTE CLICK A $index")
-
-                                
+                                Log.d("MVVM/getPage/onclick", "DISTE CLICK A $index")
+                                StorageHeroes.position = index
+                                senal?.pasarADetalles()
                             }
                         })
                         recyclerView.adapter = adaptador
