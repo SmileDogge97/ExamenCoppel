@@ -29,7 +29,7 @@ class AdaptadorCustom(private var dataSet: ArrayList<HeroeData>) :
             .into(holder.imagen)
     }
 
-    override fun getItemCount()= dataSet.size
+    override fun getItemCount() = dataSet.size
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nombre: TextView
