@@ -1,4 +1,4 @@
-package com.example.examencoppel
+package com.example.examencoppel.UI
 
 import android.os.Bundle
 import android.util.Log
@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.examencoppel.DataRetrofit.HeroeData
 import com.example.examencoppel.DataRetrofit.StorageHeroes
+import com.example.examencoppel.R
 import com.example.examencoppel.databinding.FragmentDetallesBinding
-import com.example.examencoppel.databinding.FragmentListaHeroeBinding
 
 
 class Detalles : Fragment() {

@@ -1,4 +1,4 @@
-package com.example.examencoppel
+package com.example.examencoppel.Utils
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.examencoppel.DataRetrofit.HeroeData
+import com.example.examencoppel.R
 import com.squareup.picasso.Picasso
 
 class AdaptadorCustom(private var dataSet: ArrayList<HeroeData>, var listener: ClickListener) :
@@ -31,10 +32,10 @@ class AdaptadorCustom(private var dataSet: ArrayList<HeroeData>, var listener: C
 
     override fun getItemCount() = dataSet.size
 
-    class ViewHolder(view: View, listener:ClickListener) : RecyclerView.ViewHolder(view), View.OnClickListener {
+    class ViewHolder(view: View, listener: ClickListener) : RecyclerView.ViewHolder(view), View.OnClickListener {
         val nombre: TextView
         val imagen: ImageView
-        var listener:ClickListener ?= null
+        var listener: ClickListener?= null
 
         init {
             nombre = view.findViewById(R.id.TVNombre)

@@ -1,5 +1,6 @@
-package com.example.examencoppel
+package com.example.examencoppel.Repository
 
+import com.example.examencoppel.Utils.APIHeroes
 import com.example.examencoppel.DataRetrofit.HeroeData
 import retrofit2.Response
 

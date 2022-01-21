@@ -1,6 +1,5 @@
-package com.example.examencoppel
+package com.example.examencoppel.Utils
 
-import android.content.Context
 import com.example.examencoppel.DataRetrofit.HeroeData
 import okhttp3.OkHttpClient
 import retrofit2.Response
@@ -8,7 +7,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
 interface APIHeroes {

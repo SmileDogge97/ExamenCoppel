@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listaHeroe"
-        android:name="com.example.examencoppel.ListaHeroe"
+        android:name="com.example.examencoppel.UI.ListaHeroe"
         android:label="fragment_lista_heroe"
         tools:layout="@layout/fragment_lista_heroe" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detalles"
-        android:name="com.example.examencoppel.Detalles"
+        android:name="com.example.examencoppel.UI.Detalles"
         android:label="fragment_detalles"
         tools:layout="@layout/fragment_detalles" >
         <action

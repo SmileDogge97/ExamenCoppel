@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".UI.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
@@ -17,7 +17,7 @@
 
     <!--<androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
-        android:name="com.example.examencoppel.ListaHeroe"
+        android:name="com.example.examencoppel.UI.ListaHeroe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />-->
 </LinearLayout>

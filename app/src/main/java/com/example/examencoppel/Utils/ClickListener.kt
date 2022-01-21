@@ -1,4 +1,4 @@
-package com.example.examencoppel
+package com.example.examencoppel.Utils
 
 import android.view.View
 

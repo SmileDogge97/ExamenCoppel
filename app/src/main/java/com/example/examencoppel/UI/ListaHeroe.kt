@@ -1,8 +1,7 @@
-package com.example.examencoppel
+package com.example.examencoppel.UI
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,15 +13,18 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.examencoppel.DataRetrofit.HeroeData
-import com.example.examencoppel.DataRetrofit.StorageHeroes
+import com.example.examencoppel.*
+import com.example.examencoppel.MVVM.MVVMHeroe
+import com.example.examencoppel.Utils.AdaptadorCustom
+import com.example.examencoppel.Utils.SenalNavigation
+import com.example.examencoppel.Utils.ValidarR
 import com.example.examencoppel.databinding.FragmentListaHeroeBinding
 
 
-class ListaHeroe : Fragment(), SenalNavigation{
+class ListaHeroe : Fragment(), SenalNavigation {
 
     //var lista: RecyclerView? = null
-    var adaptador: AdaptadorCustom ?= null
+    var adaptador: AdaptadorCustom?= null
     lateinit var layoutManager: LinearLayoutManager
     lateinit var listaViewModel: MVVMHeroe
     var vista: View ?= null
@@ -37,6 +39,8 @@ class ListaHeroe : Fragment(), SenalNavigation{
         savedInstanceState: Bundle?
     ): View? {
         //return inflater.inflate(R.layout.fragment_lista_heroe, container, false)
+        Log.d("ListaHeroe", "onCreateView")
+
         _binding = FragmentListaHeroeBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
@@ -45,6 +49,8 @@ class ListaHeroe : Fragment(), SenalNavigation{
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        Log.d("ListaHeroe", "onActivityCreated")
 
         listaViewModel = ViewModelProviders.of(this).get(MVVMHeroe::class.java)
         layoutManager = LinearLayoutManager(this.context)
@@ -86,6 +92,8 @@ class ListaHeroe : Fragment(), SenalNavigation{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        Log.d("ListaHeroe", "onViewCreated")
 
         this.vista = view
         /*binding.button2.setOnClickListener{

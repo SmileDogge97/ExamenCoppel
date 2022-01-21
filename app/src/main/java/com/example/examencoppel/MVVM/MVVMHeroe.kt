@@ -1,6 +1,5 @@
-package com.example.examencoppel
+package com.example.examencoppel.MVVM
 
-import android.R
 import android.content.Context
 import android.os.Handler
 import android.util.Log
@@ -8,11 +7,14 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.examencoppel.DataRetrofit.HeroeData
 import com.example.examencoppel.DataRetrofit.StorageHeroes
+import com.example.examencoppel.Repository.Repository
+import com.example.examencoppel.Utils.AdaptadorCustom
+import com.example.examencoppel.Utils.ClickListener
+import com.example.examencoppel.Utils.SenalNavigation
 import com.google.gson.stream.MalformedJsonException
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -27,7 +29,7 @@ class MVVMHeroe() : ViewModel() {
     val limit = 10
     var isLoading = false
     var contexto: Context? = null
-    var senal: SenalNavigation ?= null
+    var senal: SenalNavigation?= null
 
     lateinit var adaptador: AdaptadorCustom
     lateinit var layoutManager: LinearLayoutManager
