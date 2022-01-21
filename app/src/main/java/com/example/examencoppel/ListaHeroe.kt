@@ -96,8 +96,12 @@ class ListaHeroe : Fragment(), SenalNavigation{
     fun startRequest() {
         if (ValidarR.hayRed(context as AppCompatActivity)) {
             //loginViewModel.requestsHeroes()
+            binding.textView13.visibility = View.GONE
             listaViewModel.getPage()
         } else {
+            binding.ProgressB.visibility = View.GONE
+            binding.textView13.visibility = View.VISIBLE
+
             val builder = AlertDialog.Builder(context as AppCompatActivity)
             builder.setMessage("No hay red")
             builder.setPositiveButton("ok") { dialog, id -> }
@@ -112,7 +116,7 @@ class ListaHeroe : Fragment(), SenalNavigation{
     override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.d("ListaHeroes", "onAttach")
-        StorageHeroes.restart()
+        //StorageHeroes.restart()
     }
 
 }

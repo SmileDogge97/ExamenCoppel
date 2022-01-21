@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.example.examencoppel.DataRetrofit.HeroeData
 import com.example.examencoppel.DataRetrofit.StorageHeroes
 import com.example.examencoppel.databinding.FragmentDetallesBinding
@@ -19,7 +20,7 @@ class Detalles : Fragment() {
     var index:Int ?= null
     var datos:ArrayList<HeroeData> ?= null
     var alias:String ?= ""
-
+    var vista: View ?= null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -70,6 +71,15 @@ class Detalles : Fragment() {
 
         //binding!!.TVGrupoAfiliado.text = datos?.get(index!!)?.connections?.groupAffiliation
         binding!!.TVRelaciones.text = datos?.get(index!!)?.connections?.relatives
+
+        binding!!.BTNVolver.setOnClickListener {
+            vista?.let { Navigation.findNavController(it).navigate(R.id.listaHeroe) }
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        this.vista = view
     }
 
     fun colectarAlias() {

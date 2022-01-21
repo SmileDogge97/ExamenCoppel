@@ -18,5 +18,9 @@
         android:id="@+id/detalles"
         android:name="com.example.examencoppel.Detalles"
         android:label="fragment_detalles"
-        tools:layout="@layout/fragment_detalles" />
+        tools:layout="@layout/fragment_detalles" >
+        <action
+            android:id="@+id/action_detalles_to_listaHeroe"
+            app:destination="@id/listaHeroe" />
+    </fragment>
 </navigation>
