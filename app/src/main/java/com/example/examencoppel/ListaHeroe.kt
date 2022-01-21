@@ -3,6 +3,7 @@ package com.example.examencoppel
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -87,9 +88,9 @@ class ListaHeroe : Fragment(), SenalNavigation{
         super.onViewCreated(view, savedInstanceState)
 
         this.vista = view
-        binding.button2.setOnClickListener{
+        /*binding.button2.setOnClickListener{
             Navigation.findNavController(it).navigate(R.id.detalles)
-        }
+        }*/
     }
 
     fun startRequest() {
@@ -110,7 +111,8 @@ class ListaHeroe : Fragment(), SenalNavigation{
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        StorageHeroes.Heroes?.clear()
+        Log.d("ListaHeroes", "onAttach")
+        StorageHeroes.restart()
     }
 
 }

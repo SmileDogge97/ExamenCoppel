@@ -78,7 +78,7 @@ class MVVMHeroe() : ViewModel() {
                     }
                     isLoading = false
                     progressB?.visibility = View.GONE
-                }, 10000)
+                }, 8000)
 
             } catch (e: SocketTimeoutException) {
                 Log.e("Catch 1", "No se pudo conectar con el servidor")
