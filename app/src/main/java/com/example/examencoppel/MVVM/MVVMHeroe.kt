@@ -5,6 +5,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
@@ -28,10 +29,10 @@ class MVVMHeroe() : ViewModel() {
     //var isLoading = false
     var progressB: ProgressBar? = null
     var page = 0
-    val limit = 10
+    val limit = 5
     var isLoading = false
     var contexto: Context? = null
-    var senal: SenalNavigation?= null
+    var senal: SenalNavigation? = null
 
     lateinit var adaptador: AdaptadorCustom
     lateinit var layoutManager: LinearLayoutManager
@@ -86,12 +87,17 @@ class MVVMHeroe() : ViewModel() {
 
             } catch (e: SocketTimeoutException) {
                 Log.e("Catch 1", "No se pudo conectar con el servidor")
+                Toast.makeText(contexto, "No se pudo conectar con el servidor", Toast.LENGTH_LONG)
+                    .show()
+                progressB?.visibility = View.GONE
 
             } catch (e: MalformedJsonException) {
                 Log.e(
                     "Catch 2",
                     "Error al realizar la consulta, verifica la dirección IP del servidor"
                 )
+                Toast.makeText(contexto, "Error al realizar la consulta, verifica la dirección IP del servidor", Toast.LENGTH_LONG).show()
+                progressB?.visibility = View.GONE
             }
         }
     }
